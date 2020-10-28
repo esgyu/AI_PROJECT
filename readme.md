@@ -9,4 +9,3 @@
   
   3. postech/test.rar : 포스텍 서버에서 작동하는 소스코드를 통으로 압축한 파일. 포스텍 서버에 업로드 한 후 , 압축을 풀어 MaskTheFace/server.ipynb 파일이 서버 역할을 수행함. 하나하나 읽어보면 이해할 수 있으리라 믿음... 기본적인 각 코드들의 동작은 제목을 보고 유추할 수 있으나 flask stream.py 서버를 새로 여는 경우 cv2.CaptureVideo('주소')의 '주소'부분을 바꾸고 진행해야함! 현재 face embedding이라고 되어있는 부분의 두 블록은 arcface의 face feature extraction 성능이 안좋아보여서 주석쳐놓음. video = cv2.VideoCapture('http://posproject201013.iptime.org:8787/video_feed') 로 시작하는 블록의 if len(faces) != 0 내부의 긴 주석쳐놓은 부분이 사전에 face embedding을 뽑아놓고 현재 웹캠의 프레임에서 얼굴을 찾아 바운딩 박스만 crop 한 후, 114x114 사이즈로 resizing하고 feature extraction을 진행하여 cosine similiarity를 계산하여 argmax를 찾는 과정. known_faces_encoding은 files = glob.glob('../users/\*.jpg')에서 모든 .jpg 파일을 읽어오는데, 원하는 폴더로 경로를 변경하여 진행해야함  
   
-  ※ 런타임에 등장하는 no module 에러같은 것들은 pip install 로 대부분 해결할 수 있음. 
